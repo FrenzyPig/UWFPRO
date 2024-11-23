@@ -72,6 +72,8 @@
             this.button_file_select = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox_filepath = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label_AvailableSpace = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -162,6 +164,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label_AvailableSpace);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.textBox_Overlay_warningsize);
             this.groupBox2.Controls.Add(this.textBox_Overlay_criticalSize);
             this.groupBox2.Controls.Add(this.textBox_Overlay_Maxsize);
@@ -179,14 +183,14 @@
             // 
             // textBox_Overlay_warningsize
             // 
-            this.textBox_Overlay_warningsize.Location = new System.Drawing.Point(90, 119);
+            this.textBox_Overlay_warningsize.Location = new System.Drawing.Point(90, 115);
             this.textBox_Overlay_warningsize.Name = "textBox_Overlay_warningsize";
             this.textBox_Overlay_warningsize.Size = new System.Drawing.Size(100, 29);
             this.textBox_Overlay_warningsize.TabIndex = 11;
             // 
             // textBox_Overlay_criticalSize
             // 
-            this.textBox_Overlay_criticalSize.Location = new System.Drawing.Point(90, 75);
+            this.textBox_Overlay_criticalSize.Location = new System.Drawing.Point(90, 74);
             this.textBox_Overlay_criticalSize.Name = "textBox_Overlay_criticalSize";
             this.textBox_Overlay_criticalSize.Size = new System.Drawing.Size(100, 29);
             this.textBox_Overlay_criticalSize.TabIndex = 10;
@@ -201,9 +205,9 @@
             // button_overlay_size_save
             // 
             this.button_overlay_size_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_overlay_size_save.Location = new System.Drawing.Point(34, 174);
+            this.button_overlay_size_save.Location = new System.Drawing.Point(44, 195);
             this.button_overlay_size_save.Name = "button_overlay_size_save";
-            this.button_overlay_size_save.Size = new System.Drawing.Size(109, 41);
+            this.button_overlay_size_save.Size = new System.Drawing.Size(91, 30);
             this.button_overlay_size_save.TabIndex = 8;
             this.button_overlay_size_save.Text = "确认保存";
             this.button_overlay_size_save.UseVisualStyleBackColor = true;
@@ -212,7 +216,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 122);
+            this.label5.Location = new System.Drawing.Point(6, 118);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 21);
             this.label5.TabIndex = 3;
@@ -221,7 +225,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 78);
+            this.label4.Location = new System.Drawing.Point(6, 77);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 21);
             this.label4.TabIndex = 2;
@@ -509,6 +513,24 @@
             this.textBox_filepath.Size = new System.Drawing.Size(439, 29);
             this.textBox_filepath.TabIndex = 0;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 159);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 21);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "可用空间:";
+            // 
+            // label_AvailableSpace
+            // 
+            this.label_AvailableSpace.AutoSize = true;
+            this.label_AvailableSpace.Location = new System.Drawing.Point(90, 159);
+            this.label_AvailableSpace.Name = "label_AvailableSpace";
+            this.label_AvailableSpace.Size = new System.Drawing.Size(45, 21);
+            this.label_AvailableSpace.TabIndex = 13;
+            this.label_AvailableSpace.Text = "0MB";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -583,6 +605,8 @@
         private System.Windows.Forms.TextBox textBox_regedit_path;
         private System.Windows.Forms.Button button_regedit_commit;
         private System.Windows.Forms.Button button_regedit_addexclusion;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label_AvailableSpace;
     }
 }
 

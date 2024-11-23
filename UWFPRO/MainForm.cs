@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UWFCMD;
@@ -53,7 +55,17 @@ namespace UWFPRO
 
 
         }
-
+        private void UpdateLabel(string text)
+        {
+            if (label_AvailableSpace.InvokeRequired)
+            {
+                label_AvailableSpace.Invoke(new Action(() => label_AvailableSpace.Text = text));
+            }
+            else
+            {
+                label_AvailableSpace.Text = text;
+            }
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -80,6 +92,29 @@ namespace UWFPRO
             textBox_Overlay_Maxsize.Text = uwf_OverlayConfig_NextSession.MaximumSize.ToString();
             GetVolumeList();
             get_listBox_File_exclusion_list();
+            Thread updateThread = new Thread(UpdateAvailableSpace);
+            updateThread.IsBackground = true;
+            updateThread.Start();
+        }
+
+        private void UpdateAvailableSpace()
+        {
+            while (true)
+            {
+                try
+                {
+                    // 连接 WMI
+                    uwf_Overlay.GetConfig();
+                    UpdateLabel(uwf_Overlay.AvailableSpace.ToString()+" MB");
+                }
+                catch (Exception ex)
+                {
+                    UpdateLabel($"Error: {ex.Message}");
+                }
+
+                // 等待 2 秒再更新
+                Thread.Sleep(2000);
+            }
         }
         private void comboBox_filter_enable_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -322,7 +357,7 @@ namespace UWFPRO
 
         private void button_regedit_commit_Click(object sender, EventArgs e)
         {
-            if (uwf_Registry_Current.CommitRegistry(this.textBox_regedit_path.Text ))
+            if (uwf_Registry_Current.CommitRegistry(this.textBox_regedit_path.Text))
                 MessageBox.Show("提交成功!");
         }
     }
